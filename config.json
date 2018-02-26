@@ -1,0 +1,109 @@
+{
+  "version": "0.5.0",
+  "namespaces": {
+    "user": {
+      "setgroups": false,
+      "uidMappings": [
+        {
+          "containerID": 0,
+          "hostID": 1000,
+          "size": 1
+        }
+      ],
+      "gidMappings": [
+        {
+          "containerID": 0,
+          "hostID": 1000,
+          "size": 1
+        }
+      ]
+    },
+    "mount": {
+      "mounts": [
+        {
+          "source": "root",
+          "target": "root",
+          "flags": [
+            "MS_BIND"
+          ]
+        },
+        {
+          "source": "/dev",
+          "target": "root/dev",
+          "flags": [
+            "MS_BIND",
+            "MS_REC"
+          ]
+        },
+        {
+          "target": "root/proc",
+          "type": "proc"
+        },
+        {
+          "source": "/sys",
+          "target": "root/sys",
+          "flags": [
+            "MS_BIND",
+            "MS_REC"
+          ]
+        },
+        {
+          "source": "/etc/resolv.conf",
+          "target": "root/etc/resolv.conf",
+          "flags": [
+            "MS_BIND"
+          ]
+        },
+        {
+          "source": "root",
+          "type": "pivot-root"
+        },
+        {
+          "target": "/run",
+          "type": "tmpfs"
+        },
+        {
+          "target": "/tmp",
+          "type": "tmpfs"
+        },
+        {
+          "target": "/",
+          "flags": [
+            "MS_REMOUNT",
+            "MS_RDONLY",
+            "MS_BIND"
+          ]
+        }
+      ]
+    },
+    "pid": {}
+  },
+  "process": {
+    "user": {
+      "uid": 0,
+      "gid": 0
+    },
+    "cwd": "/",
+    "capabilities": [],
+    "args": [
+      "nginx",
+      "-g",
+      "daemon off;"
+    ],
+    "env": [
+      "PATH=/usr/sbin"
+    ]
+  },
+  "hooks": {
+    "post-create": [
+      {
+        "args": [
+          "cp",
+          "-L",
+          "/etc/localtime",
+          "root/etc/localtime"
+        ]
+      }
+    ]
+  }
+}
