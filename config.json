@@ -67,6 +67,10 @@
           "type": "tmpfs"
         },
         {
+          "target": "/var/log/nginx",
+          "type": "tmpfs"
+        },
+        {
           "target": "/",
           "flags": [
             "MS_REMOUNT",
@@ -88,7 +92,7 @@
     "args": [
       "nginx",
       "-g",
-      "daemon off; error_log /dev/null crit;"
+      "daemon off;"
     ],
     "env": [
       "PATH=/usr/sbin"
