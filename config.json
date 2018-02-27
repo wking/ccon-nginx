@@ -36,6 +36,17 @@
           ]
         },
         {
+          "target": "root/run",
+          "type": "tmpfs"
+        },
+        {
+          "source": "/run/systemd/journal/dev-log",
+          "target": "root/run/systemd/journal/dev-log",
+          "flags": [
+            "MS_BIND"
+          ]
+        },
+        {
           "target": "root/proc",
           "type": "proc"
         },
@@ -71,10 +82,6 @@
         {
           "source": "root",
           "type": "pivot-root"
-        },
-        {
-          "target": "/run",
-          "type": "tmpfs"
         },
         {
           "target": "/tmp",
