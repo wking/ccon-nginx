@@ -6,6 +6,8 @@ Run [Nginx][] in a [ccon][] container.
 
 Edit [`config.json`](config.json) to:
 
+* Update your `hostID` entries to match `id -u` and `id -g`
+  respectively.
 * Use your own `tls` source (or replace the entries in the [`tls`
   directory](tls) with your own content.
 * Use your own path for the hosted content, replaing `"source": "."`.
