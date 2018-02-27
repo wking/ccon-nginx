@@ -71,6 +71,10 @@
           "type": "tmpfs"
         },
         {
+          "target": "/var/lib/nginx/tmp",
+          "type": "tmpfs"
+        },
+        {
           "target": "/",
           "flags": [
             "MS_REMOUNT",
