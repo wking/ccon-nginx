@@ -5,14 +5,14 @@
       "setgroups": false,
       "uidMappings": [
         {
-          "containerID": 0,
+          "containerID": 1,
           "hostID": 1000,
           "size": 1
         }
       ],
       "gidMappings": [
         {
-          "containerID": 0,
+          "containerID": 1,
           "hostID": 1000,
           "size": 1
         }
@@ -84,8 +84,8 @@
   },
   "process": {
     "user": {
-      "uid": 0,
-      "gid": 0
+      "uid": 1,
+      "gid": 1
     },
     "cwd": "/",
     "capabilities": [],
