@@ -55,6 +55,13 @@
           ]
         },
         {
+          "source": ".",
+          "target": "root/var/www/localhost/htdocs",
+          "flags": [
+            "MS_BIND"
+          ]
+        },
+        {
           "source": "root",
           "type": "pivot-root"
         },
