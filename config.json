@@ -55,6 +55,13 @@
           ]
         },
         {
+          "source": "tls",
+          "target": "root/etc/tls",
+          "flags": [
+            "MS_BIND"
+          ]
+        },
+        {
           "source": ".",
           "target": "root/var/www/localhost/htdocs",
           "flags": [
