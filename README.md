@@ -9,7 +9,7 @@ Edit [`config.json`](config.json) to:
 * Update your `hostID` entries to match `id -u` and `id -g`
   respectively.
 * Use your own `tls` source (or replace the entries in the [`tls`
-  directory](tls) with your own content.
+  directory](tls) with your own content).
 * Use your own paths for the hosted content, replaing the `README.md`
   and `LICENSE` binds with something like:
 
