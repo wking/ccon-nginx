@@ -10,7 +10,23 @@ Edit [`config.json`](config.json) to:
   respectively.
 * Use your own `tls` source (or replace the entries in the [`tls`
   directory](tls) with your own content.
-* Use your own path for the hosted content, replaing `"source": "."`.
+* Use your own paths for the hosted content, replaing the `README.md`
+  and `LICENSE` binds with something like:
+
+    ```json
+    {
+      "source": "path/to/app-1",
+      "target": "root/srv/static/app-1",
+      "flags": ["MS_BIND"]
+    },
+    {
+      "source": "path/to/app-2",
+      "target": "root/srv/static/app-2",
+      "flags": ["MS_BIND"]
+    },
+    ```
+
+    to setup `app-1.example.com` and `app-2.example.com`.
 
 Edit [`nginx.conf`](root/etc/nginx.conf) as you see fit.  It logs to
 syslog on `/dev/log` by default.

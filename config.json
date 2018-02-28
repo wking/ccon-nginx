@@ -62,8 +62,15 @@
           ]
         },
         {
-          "source": ".",
-          "target": "root/var/www/localhost/htdocs",
+          "source": "README.md",
+          "target": "root/srv/static/a/index.html",
+          "flags": [
+            "MS_BIND"
+          ]
+        },
+        {
+          "source": "LICENSE",
+          "target": "root/srv/static/b/index.html",
           "flags": [
             "MS_BIND"
           ]
