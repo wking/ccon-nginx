@@ -26,7 +26,7 @@ Edit [`config.json`](config.json) to:
     },
     ```
 
-    to setup `app-1.example.com` and `app-2.example.com`.
+    to setup `app-1.azurestandard.com` and `app-2.azurestandard.com`.
 
 Edit [`nginx.conf`](root/etc/nginx.conf) as you see fit.  It logs to
 syslog on `/dev/log` by default.
