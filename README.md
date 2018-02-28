@@ -23,6 +23,28 @@ $ ccon
 
 And away you go :).
 
+## Port redirects
+
+If your Nginx is [`listen`][listen]ing at a high port so you don't
+need [`CAP_NET_BIND_SERVICE`][capabilities.7], but you want to access
+it on the usual port for testing, you can use [iptables][] to redirect
+connections from port 443 to port 8000:
+
+```console
+# iptables -t nat -A PREROUTING -p tcp --dport 443 -j REDIRECT --to-port 8000
+```
+
+When you no longer need the redirection, you can delete it:
+
+```console
+# iptables -t nat -L PREROUTING --line-numbers
+Chain PREROUTING (policy ACCEPT)
+num  target     prot opt source      destination
+1    DOCKER     all  --  anywhere    anywhere       ADDRTYPE match dst-type LOCAL
+2    REDIRECT   tcp  --  anywhere    anywhere       tcp dpt:https redir ports 8000
+# iptables -t nat -D PREROUTING 2
+```
+
 ## Maintenance
 
 The host package was built for amd64 using [Gentoo's
@@ -845,8 +867,10 @@ not require duplication alongside binary distribution.
 [ccon]: https://github.com/wking/ccon
 [gentoo-nginx]: https://packages.gentoo.org/packages/www-servers/nginx
 [glibc-licenses]: https://sourceware.org/git/?p=glibc.git;a=blob;f=LICENSES;h=80f7f1487947f57815b9fe076fadc8c7f94eeb8e;hb=db0242e3023436757bbc7c488a779e6e3343db04
+[iptables]: https://www.netfilter.org/projects/iptables/
 [lddtree-builder]: https://github.com/wking/lddtree-builder
 [LGPL-2.1]: https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html
+[listen]: https://nginx.org/en/docs/http/ngx_http_core_module.html#listen
 [Nginx]: https://nginx.org/
 [nginx-license]: https://nginx.org/LICENSE
 [ngx_headers_more-license]: https://github.com/openresty/headers-more-nginx-module/tree/v0.32#copyright--license
@@ -854,3 +878,5 @@ not require duplication alongside binary distribution.
 [pcre-license]: https://vcs.pcre.org/pcre2/code/trunk/LICENCE?revision=910&view=markup
 [Portage]: https://wiki.gentoo.org/wiki/Portage
 [zlib-license]: https://github.com/madler/zlib/blob/v1.2.11/README#L87-L115
+
+[capabilities.7]: http://man7.org/linux/man-pages/man7/capabilities.7.html
