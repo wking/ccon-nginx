@@ -9,7 +9,7 @@ Edit [`config.json`](config.json) to:
 * Update your `hostID` entries to match `id -u` and `id -g`
   respectively.
 * Use your own `tls` source (or replace the entries in the [`tls`
-  directory](tls) with your own content.
+  directory](tls) with your own content).
 * Use your own path for the hosted content, replaing `"source": "."`.
 
 Edit [`nginx.conf`](root/etc/nginx.conf) as you see fit.  It logs to
