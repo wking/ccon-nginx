@@ -73,15 +73,15 @@
           ]
         },
         {
-          "source": "README.md",
-          "target": "root/srv/static/a/index.html",
+          "source": ".static/website",
+          "target": "root/srv/static/website",
           "flags": [
             "MS_BIND"
           ]
         },
         {
-          "source": "LICENSE",
-          "target": "root/srv/static/b/index.html",
+          "source": ".static/internal-website",
+          "target": "root/srv/static/internal-website",
           "flags": [
             "MS_BIND"
           ]
